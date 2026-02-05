@@ -60,7 +60,7 @@
       on:click="/toggle"
     >
       <span class="svg-wrapper header-drawer-icon header-drawer-icon--open">
-        {{- 'icon-menu.svg' | inline_asset_content -}}
+        {{- 'menu.svg' | inline_asset_content -}}
       </span>
       <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
         {{- 'icon-close.svg' | inline_asset_content -}}
@@ -501,6 +501,7 @@
                           endif
                         -%}
 
+                        {% comment %}
                         {% if featured_collections.size > 0 or featured_products_collection.products_count > 0 %}
                           <div
                             class="menu-drawer__featured-content menu-drawer__featured-content--childlist"
@@ -536,6 +537,7 @@
                             </ul>
                           </div>
                         {% endif %}
+                        {% endcomment %}
                       </div>
                     </div>
                   </details>
@@ -708,6 +710,7 @@
           endfor
         endif
       -%}
+      {% comment %}
       {% if top_level_featured_collections.size > 0 or top_level_featured_products_collection.products_count > 0 %}
         <div
           class="menu-drawer__featured-content"
@@ -743,6 +746,7 @@
           </ul>
         </div>
       {% endif %}
+      {% endcomment %}
     </div>
     <div
       class="menu-drawer__backdrop"
@@ -756,11 +760,13 @@
     position: initial;
   }
 
+  /*
   @media screen and (min-width: 750px) {
     .header--desktop header-menu + .header__drawer header-drawer {
       display: none;
     }
   }
+  */
 
   .menu-drawer-container .header__icon--summary {
     color: var(--color-foreground);
@@ -772,7 +778,7 @@
 
   .header__icon--summary .header-drawer-icon {
     margin: auto;
-    width: var(--icon-size-xs);
+    width: 2.2rem;
     height: var(--icon-size-xs);
   }
 

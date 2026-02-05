@@ -53,13 +53,18 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    <img
+      src="{{ 'logo-1.jpg' | asset_url }}"
+      class="header-logo__image"
+      alt="{{ shop.name }}"
+      width="auto"
+      height="{{ settings.logo_height }}"
+      style="
+        --header-logo-image-height: {{ settings.logo_height }}px;
+        --header-logo-image-height-mobile: {{ settings.logo_height_mobile }}px;
+        width: auto;
+      "
+    >
   </span>
 
   {% if use_inverse_logo %}
