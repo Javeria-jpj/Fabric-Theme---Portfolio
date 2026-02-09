@@ -53,6 +53,15 @@
         style: image_border_style,
         sizes: sizes
     }}
+  {%- elsif block_settings.asset_image != blank -%}
+    <img
+      src="{{ block_settings.asset_image | asset_url }}"
+      class="image-block__image border-style"
+      style="{{ image_border_style }}"
+      loading="lazy"
+      width="1000"
+      height="1250"
+    >
   {%- else -%}
     <div class="placeholder-image border-style size-style" style="{{ image_border_style }}">
       {{ 'detailed-apparel-1' | placeholder_svg_tag: 'hero__image' }}
@@ -118,6 +127,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "asset_image",
+      "label": "Asset image name (e.g. hoodies-img-1.jpg)"
     },
     {
       "type": "url",
