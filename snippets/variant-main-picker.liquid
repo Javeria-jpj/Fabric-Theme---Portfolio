@@ -61,11 +61,20 @@
             ref="fieldsets[]"
             {{ option_id_attribute }}
           >
-            <legend>
-              {{ product_option.name | escape -}}
+            <legend class="variant-option__legend">
+              <span class="variant-option__name">{{ product_option.name | escape }}</span>
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
+              {%- if product_option.name == 'Size' or product_option.name == 'size' -%}
+                <a href="#size-chart" class="variant-option__size-chart-link">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon icon-ruler">
+                    <path d="M7 7H17M7 12H13M7 17H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Size Chart
+                </a>
+              {%- endif -%}
             </legend>
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
@@ -261,9 +270,29 @@
     border: none;
   }
 
-  .variant-option--buttons legend {
+  .variant-option--buttons .variant-option__legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     padding: 0;
     margin-block-end: var(--margin-xs);
+  }
+
+  .variant-option__size-chart-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8em;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .variant-option__size-chart-link svg {
+    width: 16px;
+    height: 16px;
+    position: static;
   }
 
   .variant-option__swatch-value {
@@ -321,7 +350,7 @@
     padding-block: var(--padding-sm);
     padding-inline: var(--padding-lg);
     border: var(--options-border-width) solid var(--color-variant-border);
-    border-radius: var(--options-border-radius);
+    border-radius: 100px;
     overflow: clip;
     justify-content: center;
     min-height: 3.25em;

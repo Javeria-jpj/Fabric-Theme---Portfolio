@@ -962,7 +962,7 @@
 
   .menu-drawer__menu > .menu-drawer__list-item {
     display: flex;
-    min-height: calc(2 * var(--padding-lg) + var(--icon-size-xs));
+    min-height: calc(2 * var(--padding-xs) + var(--icon-size-xs));
   }
 
   .menu-drawer__list-item--deep .menu-drawer__list-item,
@@ -974,11 +974,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-block-end: var(--margin-md);
+    margin-block-end: var(--margin-xs);
   }
 
   .menu-drawer__menu--childlist .menu-drawer__list-item--flat {
-    margin-block-end: var(--margin-sm);
+    margin-block-end: var(--margin-3xs);
 
     @media screen and (min-width: 750px) {
       margin-block-end: var(--margin-lg);
@@ -1015,15 +1015,19 @@
   }
 
   .menu-drawer__list-item--divider .menu-drawer__menu-item:not(.menu-drawer__menu-item--child) {
-    min-height: calc(2 * var(--padding-lg) + var(--icon-size-xs));
+    min-height: calc(2 * var(--padding-xs) + var(--icon-size-xs));
+  }
+
+  .menu-drawer__menu-item {
+    font-weight: 400;
   }
 
   .menu-drawer__menu-item--mainlist {
-    min-height: calc(2 * var(--padding-lg) + var(--icon-size-xs));
+    min-height: calc(2 * var(--padding-xs) + var(--icon-size-xs));
     font-family: var(--menu-top-level-font-family);
     font-style: var(--menu-top-level-font-style);
-    font-weight: var(--menu-top-level-font-weight);
-    font-size: var(--menu-top-level-font-size);
+    font-weight: 400;
+    font-size: var(--menu-font-xl--size);
     line-height: var(--menu-top-level-font-line-height);
     text-transform: var(--menu-top-level-font-case);
     color: var(--menu-top-level-font-color);
@@ -1037,8 +1041,8 @@
   .menu-drawer__menu-item--parent {
     font-family: var(--menu-parent-font-family);
     font-style: var(--menu-parent-font-style);
-    font-weight: var(--menu-parent-font-weight);
-    font-size: var(--menu-parent-font-size);
+    font-weight: 400;
+    font-size: var(--menu-font-lg--size);
     line-height: var(--menu-parent-font-line-height);
     text-transform: var(--menu-parent-font-case);
     color: var(--menu-parent-font-color);
@@ -1051,8 +1055,8 @@
   .menu-drawer__menu-item--child {
     font-family: var(--menu-child-font-family);
     font-style: var(--menu-child-font-style);
-    font-weight: var(--menu-child-font-weight);
-    font-size: var(--menu-child-font-size);
+    font-weight: 400;
+    font-size: var(--menu-font-md--size);
     line-height: var(--menu-child-font-line-height);
     text-transform: var(--menu-child-font-case);
     color: var(--menu-child-font-color);
@@ -1060,6 +1064,21 @@
     &:hover {
       color: var(--menu-child-font-color);
     }
+  }
+
+  /* Utility links font weight and size */
+  .drawer-localization__button,
+  .menu-drawer__account,
+  .menu-drawer__link-list-item {
+    font-weight: 400 !important;
+  }
+
+  .menu-drawer__account {
+    font-size: var(--menu-font-md--size);
+  }
+
+  .drawer-localization__button {
+    font-size: var(--menu-font-sm--size);
   }
 
   .menu-drawer__menu--childlist summary.menu-drawer__menu-item {
@@ -1226,7 +1245,7 @@
     gap: var(--gap-xs);
     text-decoration: none;
     height: 44px;
-    font-size: 1.4rem;
+    font-size: var(--menu-font-md--size);
     color: rgb(var(--color-foreground));
   }
 

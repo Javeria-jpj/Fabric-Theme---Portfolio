@@ -336,6 +336,12 @@
           {% else %}
             {%- render 'product-media', media: media, sizes: media_sizes, is_main_product_media: forloop.first -%}
           {% endif %}
+
+          {%- if forloop.first -%}
+            <div class="product-media-badge product-media-badge--selling-fast">
+              SELLING FAST
+            </div>
+          {%- endif -%}
         {% endcapture %}
         {% capture class %}
           {{ product_media_container_class }} product-media-container--{{ media.media_type }}{% if block_settings.zoom %} product-media-container--zoomable{% endif %}{% if forloop.index0 == lowest_aspect_ratio_index and block_settings.aspect_ratio == 'adapt' %} product-media-container--tallest{% endif %}
@@ -375,6 +381,16 @@
             aspect_ratio: block_settings.aspect_ratio,
             thumbnail_radius: block_settings.thumbnail_radius
           -%}
+          {%- if block_settings.thumbnail_position == 'left' or block_settings.thumbnail_position == 'right' -%}
+            <div class="media-gallery__buy-the-look desktop:block hidden" style="margin-top: 16px;">
+              <a href="#buy-the-look" class="buy-the-look-button">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4V2M12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6C14 4.89543 13.1046 4 12 4ZM12 8V22M12 8L19 13M12 8L5 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Buy the Look</span>
+              </a>
+            </div>
+          {%- endif -%}
         {% endif %}
 
         {% if render_mobile_slideshow_controls %}
@@ -733,5 +749,51 @@
   .dialog-zoomed-gallery .product-media-container--model .product-media__image {
     /* Make the height match the height of the model-viewer */
     height: 100vh;
+  }
+
+  .product-media-badge--selling-fast {
+    position: absolute;
+    bottom: var(--padding-md);
+    right: var(--padding-md);
+    background: #121212;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+
+  .buy-the-look-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-xs);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  .buy-the-look-button svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 1px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-media-badge--selling-fast {
+      bottom: var(--padding-sm);
+      right: var(--padding-sm);
+      font-size: 10px;
+      padding: 4px 12px;
+    }
   }
 {% endstylesheet %}

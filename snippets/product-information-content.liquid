@@ -169,7 +169,8 @@
     .product-information__grid:not(.product-information--media-none) {
       /* Media on the left side */
       &.product-information--media-left {
-        grid-template-columns: 1fr min(50vw, var(--sidebar-width));
+        justify-content: center;
+        grid-template-columns: 0.6fr min(50vw, var(--sidebar-width));
 
         .product-information__media {
           padding-right: calc(var(--gap, 0) / 2);
@@ -288,7 +289,8 @@
         .product-information__grid--half,
         .product-information--media-none
       ).product-information--media-left {
-      grid-template-columns: 2fr 1fr;
+      justify-content: center;
+      grid-template-columns: 0.6fr min(50vw, var(--sidebar-width));
     }
 
     .product-information__grid:not(

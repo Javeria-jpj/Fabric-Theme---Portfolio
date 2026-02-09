@@ -48,6 +48,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
+        "asset_image_1": "hero-banner-img.png",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -273,6 +274,8 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
+                    "asset_image": "hoodies-img-1.jpg",
+                    "link": "shopify:\/\/collections\/casualhoodies",
                     "image_ratio": "portrait",
                     "width": "fill",
                     "custom_width": 100,
@@ -326,6 +329,8 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
+                    "asset_image": "denims-img-1.jpg",
+                    "link": "shopify:\/\/collections\/casualdenim",
                     "image_ratio": "portrait",
                     "width": "fill",
                     "custom_width": 100,
@@ -379,6 +384,8 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
+                    "asset_image": "newarrivals-img-1.png",
+                    "link": "shopify:\/\/collections\/newarrivals",
                     "image_ratio": "portrait",
                     "width": "fill",
                     "custom_width": 100,
@@ -432,6 +439,8 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
+                    "asset_image": "oversized-img-1.png",
+                    "link": "shopify:\/\/collections\/oversized",
                     "image_ratio": "portrait",
                     "width": "fill",
                     "custom_width": 100,
@@ -469,7 +478,7 @@
         "columns": 3,
         "mobile_columns": "1",
         "section_width": "page-width",
-        "columns_gap": 40,
+        "columns_gap": 12,
         "color_scheme": "",
         "icons_style": "arrow",
         "icons_shape": "none",
