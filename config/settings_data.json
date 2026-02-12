@@ -72,8 +72,8 @@
     "variant_button_width": "equal-width-buttons",
     "content_for_index": [],
     "blocks": {
-      "3806842522224694177": {
-        "type": "shopify://apps/eazy-swatches/blocks/eazy_swatches/4af54d60-cc34-4639-b1ce-6ad95a055460",
+      "1306064247955555917": {
+        "type": "shopify://apps/variant-title-king/blocks/starapps-vtk-embed/b9b7a642-58c3-4fe1-8f1b-ed3e502da04b",
         "disabled": false,
         "settings": {}
       }
