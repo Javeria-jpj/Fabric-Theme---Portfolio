@@ -6,13 +6,21 @@
   {%  render 'spacing-style', settings: block_settings %}
   {% render 'border-override', settings: block_settings %}
    --size-style-width: {{ block_settings.custom_width }}%; --size-style-width-mobile: {{ block_settings.custom_width_mobile }}%;
-   --size-style-aspect-ratio: {% if block_settings.source == 'uploaded' %}{{ block_settings.video.aspect_ratio | default: 'auto' }}{% elsif block_settings.cover_image == blank %}{{ block_settings.aspect_ratio }}{% else %}auto{% endif %};
+   --size-style-aspect-ratio: {% if block_settings.asset_video != blank %}{{ block_settings.aspect_ratio }}{% elsif block_settings.source == 'uploaded' %}{{ block_settings.video.aspect_ratio | default: 'auto' }}{% elsif block_settings.cover_image == blank %}{{ block_settings.aspect_ratio }}{% else %}auto{% endif %};
 {% endcapture %}
 
-{% if block_settings.source == 'uploaded' %}
+{% liquid
+  assign video_source = block_settings.video
+  if block_settings.asset_video != blank
+    assign video_source = block_settings.asset_video
+  endif
+%}
+
+{% if block_settings.source == 'uploaded' or block_settings.asset_video != blank %}
   {% render 'video',
-    video: block_settings.video,
+    video: video_source,
     video_class: 'spacing-style size-style border-style',
+    video_autoplay: block_settings.video_autoplay,
     video_loop: block_settings.video_loop,
     video_style: video_style,
     video_preview_image: block_settings.video.preview_image,
@@ -24,6 +32,8 @@
     video_from_url: true,
     video: block_settings.video_url.id,
     video_class: 'spacing-style size-style border-style',
+    video_autoplay: block_settings.video_autoplay,
+    video_loop: block_settings.video_loop,
     video_type: block_settings.video_url.type,
     video_style: video_style,
     video_alt: block_settings.alt,
@@ -44,6 +54,12 @@
   "name": "t:names.video",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "asset_video",
+      "label": "Asset video",
+      "info": "Filename of a video in the assets folder (e.g. video.mp4). Overrides the Shopify video."
+    },
     {
       "type": "select",
       "id": "source",
@@ -128,7 +144,6 @@
       "type": "select",
       "id": "aspect_ratio",
       "label": "t:settings.aspect_ratio",
-      "visible_if": "{{ block.settings.source == 'url' and block.settings.cover_image == blank }}",
       "options": [
         {
           "value": "auto",

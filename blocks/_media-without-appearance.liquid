@@ -6,7 +6,7 @@
   endif
 %}
 
-{% render 'media', unset_image_tag: unset_image_tag, section_id: section.id %}
+{% render 'media', unset_image_tag: unset_image_tag, section_id: section.id, block: block %}
 
 {% schema %}
 {
@@ -33,6 +33,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image",
+      "visible_if": "{{ block.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "text",
+      "id": "asset_image",
+      "label": "Asset image name (e.g. hoodies-img-1.jpg)",
       "visible_if": "{{ block.settings.media_type == 'image' }}"
     },
     {
